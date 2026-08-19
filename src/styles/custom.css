@@ -66,3 +66,31 @@ details summary {
   margin-block: 1.25rem !important;
   border-color: var(--sl-color-gray-5);
 }
+
+/* ==========================================================================
+   Exact Sidebar Container Width & Layout Adjustments
+   ========================================================================== */
+
+/* 1. Left Navigation Sidebar Width */
+.starlight__sidebar {
+  width: 12rem !important; /* Reduced from default ~18.75rem */
+}
+
+/* 2. Right "On This Page" Overview Sidebar Width */
+.right-sidebar-container {
+  width: 12rem !important; /* Reduced from default ~18.75rem */
+}
+
+/* 3. Adjust Main Grid Layout to fill the recovered width */
+@media (min-width: 72rem) {
+  .main-pane {
+    /* Expands the central main container to use full available space */
+    max-width: calc(100% - 24rem) !important;
+  }
+}
+
+/* 4. Reduce internal horizontal padding of sidebars for tighter text fitting */
+.starlight__sidebar .sidebar-content,
+.right-sidebar-container {
+  padding-inline: 0.5rem !important;
+}
