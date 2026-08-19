@@ -1,0 +1,65 @@
+---
+title: ''
+description: Personal repository for full stack web development topics including HTML,CSS,Javascript,Typescript,Angular,Node.js.
+template: splash
+hero:
+  tagline: Personal knowledge base for quick revision and code references. Click any category to start exploring.
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+<CardGrid stack>
+
+<a href="/html/" class="card-link card-html">
+  <Card title="HTML →" icon="seti:html" />
+</a>
+
+<a href="/css/" class="card-link-css">
+  <Card title="CSS →" icon="seti:sass" />
+</a>
+
+<a href="/javascript/" class="card-link-js">
+  <Card title="Javascript →" icon="seti:javascript" />
+</a>
+
+<a href="/typescript/" class="card-link-ts">
+  <Card title="TypeScript →" icon="seti:typescript" />
+</a>
+
+<a href="/angular/" class="card-link-angular">
+  <Card title="Angular →" icon="astro" />
+</a>
+
+<a href="/node/" class="card-link-node">
+  <Card title="Node.js →" icon="node" />
+</a>
+
+</CardGrid>
+
+<style>{`
+
+	.card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+	a {
+		text-decoration: none;
+	}
+
+	a:hover {
+		transform: scaleX(1);
+  	transform-origin: bottom left;
+  	box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
+  }
+
+
+`}</style>
+
+---
+
+## Quick Usage Tips
+
+- **Search:** Use `Ctrl + K` or `Cmd + K` anywhere on the site to instantly search through all questions and code snippets.
+- **Hidden Answers:** Answers are collapsed by default. Click any question or toggle to expand the full solution and code blocks.
