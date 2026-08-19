@@ -3,9 +3,7 @@ title: "Angular Vault"
 description: "All Angular questions, answers, and code snippets in one place."
 ---
 
-## 1. Core & Architecture
-
-### Q: What is the difference between Default and OnPush Change Detection?
+### 1: What is the difference between Default and OnPush Change Detection?
 
 <details>
 <summary><strong>Click to reveal answer</strong></summary>
