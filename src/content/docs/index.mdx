@@ -1,65 +1,37 @@
 ---
-title: ''
-description: Personal repository for full stack web development topics including HTML,CSS,Javascript,Typescript,Angular,Node.js.
+title: Fast access to interview questions and daily learnings
+description: Fast access to interview questions and daily learnings.
 template: splash
 hero:
-  tagline: Personal knowledge base for quick revision and code references. Click any category to start exploring.
+  tagline: Quick access to daily technical learnings, core concepts, and interview questions. Select a topic below to dive in.
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+<div class="category-section">
+  <h2 class="category-header">Categories</h2>
+  <div class="category-grid">
+    <a href="/html/" class="card card-html">
+      <span class="icon">🌐</span>
+      <span class="label">HTML</span>
+    </a>
 
-<CardGrid stack>
+    <a href="/css/" class="card card-css">
+      <span class="icon">🎨</span>
+      <span class="label">CSS</span>
+    </a>
 
-<a href="/html/" class="card-link card-html">
-  <Card title="HTML →" icon="seti:html" />
-</a>
+    <a href="/javascript/" class="card card-js">
+      <span class="icon">⚡</span>
+      <span class="label">JavaScript</span>
+    </a>
 
-<a href="/css/" class="card-link-css">
-  <Card title="CSS →" icon="seti:sass" />
-</a>
+    <a href="/typescript/" class="card card-ts">
+      <span class="icon">📘</span>
+      <span class="label">TypeScript</span>
+    </a>
 
-<a href="/javascript/" class="card-link-js">
-  <Card title="Javascript →" icon="seti:javascript" />
-</a>
-
-<a href="/typescript/" class="card-link-ts">
-  <Card title="TypeScript →" icon="seti:typescript" />
-</a>
-
-<a href="/angular/" class="card-link-angular">
-  <Card title="Angular →" icon="astro" />
-</a>
-
-<a href="/node/" class="card-link-node">
-  <Card title="Node.js →" icon="node" />
-</a>
-
-</CardGrid>
-
-<style>{`
-
-	.card-link {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-  }
-
-	a {
-		text-decoration: none;
-	}
-
-	a:hover {
-		transform: scaleX(1);
-  	transform-origin: bottom left;
-  	box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
-  }
-
-
-`}</style>
-
----
-
-## Quick Usage Tips
-
-- **Search:** Use `Ctrl + K` or `Cmd + K` anywhere on the site to instantly search through all questions and code snippets.
-- **Hidden Answers:** Answers are collapsed by default. Click any question or toggle to expand the full solution and code blocks.
+    <a href="/angular/" class="card card-angular">
+      <span class="icon">🅰️</span>
+      <span class="label">Angular</span>
+    </a>
+  </div>
+</div>

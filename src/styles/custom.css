@@ -1,96 +1,432 @@
 /* ==========================================================================
-   Main Content Layout, Typography & Spacing Overrides
+   0. Brand Color Variables
    ========================================================================== */
 
-/* 1. Main Page Padding & Margins */
-.main-frame {
-  padding-top: 1rem !important;
-}
-
-.sl-markdown-content {
-  /* Reduce top/bottom padding of content container */
-  padding-block: 0.5rem 2rem !important;
-}
-
-/* 2. Compact Typography Sizes & Line Heights */
-.sl-markdown-content h1 {
-  font-size: 1.85rem !important;
-  margin-bottom: 1rem !important;
-}
-
-.sl-markdown-content h2 {
-  font-size: 1.45rem !important;
-  margin-top: 1.75rem !important;
-  margin-bottom: 0.75rem !important;
-  padding-bottom: 0.25rem;
-  border-bottom: 1px solid var(--sl-color-gray-5);
-}
-
-.sl-markdown-content h3 {
-  font-size: 1.15rem !important;
-  margin-top: 1.25rem !important;
-  margin-bottom: 0.5rem !important;
-}
-
-/* Paragraphs & Lists */
-.sl-markdown-content p,
-.sl-markdown-content li {
-  font-size: 0.95rem !important;
-  line-height: 1.5 !important;
-  margin-bottom: 0.75rem !important;
-}
-
-/* 3. Compact <details> (Q&A Toggle Blocks) Padding & Spacing */
-details {
-  padding: 0.5rem 0.85rem !important;
-  margin-top: 0.75rem !important;
-  margin-bottom: 1.25rem !important;
-}
-
-details summary {
-  font-size: 0.95rem !important;
-}
-
-/* 4. Compact Code Blocks */
-.sl-markdown-content pre {
-  padding: 0.75rem 1rem !important;
-  margin-block: 0.5rem 1rem !important;
-}
-
-.sl-markdown-content code {
-  font-size: 0.875rem !important;
-}
-
-/* Horizontal separators between Q&A items */
-.sl-markdown-content hr {
-  margin-block: 1.25rem !important;
-  border-color: var(--sl-color-gray-5);
-}
-
-/* ==========================================================================
-   Exact Sidebar Container Width & Layout Adjustments
-   ========================================================================== */
-
-/* 1. Left Navigation Sidebar Width */
-.starlight__sidebar {
-  width: 12rem !important; /* Reduced from default ~18.75rem */
-}
-
-/* 2. Right "On This Page" Overview Sidebar Width */
-.right-sidebar-container {
-  width: 12rem !important; /* Reduced from default ~18.75rem */
-}
-
-/* 3. Adjust Main Grid Layout to fill the recovered width */
-@media (min-width: 72rem) {
-  .main-pane {
-    /* Expands the central main container to use full available space */
-    max-width: calc(100% - 24rem) !important;
+   :root {
+    --sl-content-width: 100% !important;
+  
+    /* Tech Category Brand Colors */
+    --cat-html: #ea580c;
+    --cat-css: #2563eb;
+    --cat-js: #d97706;
+    --cat-ts: #0284c7;
+    --cat-angular: #e11d48;
   }
-}
+  
+  /* ==========================================================================
+     1. Starlight Page Layout & Native Theme Overrides
+     ========================================================================== */
+  
+  .sl-container,
+  .main-pane,
+  .content-panel,
+  main {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+  
+  .main-pane {
+    padding: 0.75rem 1.25rem !important;
+  }
+  
+  .content-panel {
+    padding: 0 !important;
+  }
+  
+  .sl-flex.breadcrumbs,
+  footer.sl-flex {
+    display: none !important;
+  }
+  
+  /* Base Headings Setup */
+  main h1,
+  main h2,
+  main h3,
+  main h4 {
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.3rem !important;
+    font-size: 1rem !important;
+  }
+  
+  /* Override Starlight High-Specificity Heading Spacing */
+  .sl-markdown-content :not(h1, h2, h3, h4, h5, h6, .sl-heading-wrapper) + :is(.sl-heading-wrapper) {
+    margin-top: 0.5rem !important;
+  }
+  
+  .sl-markdown-content .sl-heading-wrapper {
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.25rem !important;
+  }
+  
+  /* ==========================================================================
+     2. Remove Right Overview Pane (Table of Contents)
+     ========================================================================== */
+  
+  starlight-toc,
+  mobile-starlight-toc,
+  .right-sidebar-container,
+  aside.right-sidebar,
+  .right-sidebar,
+  [class*="right-sidebar"] {
+    display: none !important;
+  }
+  
+  /* ==========================================================================
+     3. Landing Page Hero (Title & Description)
+     ========================================================================== */
+  
+  .hero {
+    display: grid !important;
+    grid-template-columns: 12fr !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0.5rem 0 0.75rem 0 !important;
+    text-align: left !important;
+  }
+  
+  .hero > .sl-flex,
+  .hero .copy {
+    display: grid !important;
+    grid-template-columns: 12fr !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    text-align: left !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  .hero h1 {
+    text-align: left !important;
+    margin-bottom: 0.25rem !important;
+    font-size: var(--sl-text-2xl) !important;
+    color: var(--sl-color-white) !important;
+  }
+  
+  .hero .tagline {
+    text-align: left !important;
+    font-size: var(--sl-text-base) !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    color: var(--sl-color-gray-2) !important;
+    font-weight: 400 !important;
+    line-height: 1.5 !important;
+  }
+  
+  /* ==========================================================================
+     4. Category Section & Grid Cards (Adaptive Light/Dark Theme)
+     ========================================================================== */
+  
+  .category-section {
+    width: 100%;
+    margin-top: 1.25rem;
+    padding: 0.25rem 0;
+  }
+  
+  .category-header {
+    font-size: 1.15rem !important;
+    font-weight: 700 !important;
+    color: var(--sl-color-white) !important;
+    margin-bottom: 0.75rem !important;
+    border-bottom: 1px solid var(--sl-color-hairline);
+    padding-bottom: 0.3rem;
+  }
+  
+  .category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.75rem;
+    width: 100%;
+  }
+  
+  .card {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem 0.85rem;
+    border-radius: 0.4rem;
+    text-decoration: none !important;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-2px);
+  }
+  
+  .card .icon {
+    font-size: 1.25rem;
+    line-height: 1;
+    transition: transform 0.2s ease;
+  }
+  
+  .card:hover .icon {
+    transform: scale(1.1);
+  }
+  
+  .card .label {
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: var(--sl-color-text) !important;
+  }
+  
+  /* Theme-Adaptive Category Card Variants */
+  .card-html {
+    border: 1px solid color-mix(in srgb, var(--cat-html) 40%, var(--sl-color-hairline));
+    background: color-mix(in srgb, var(--cat-html) 12%, var(--sl-color-bg));
+  }
+  .card-html:hover {
+    border-color: var(--cat-html);
+    box-shadow: 0 3px 10px color-mix(in srgb, var(--cat-html) 30%, transparent);
+  }
+  
+  .card-css {
+    border: 1px solid color-mix(in srgb, var(--cat-css) 40%, var(--sl-color-hairline));
+    background: color-mix(in srgb, var(--cat-css) 12%, var(--sl-color-bg));
+  }
+  .card-css:hover {
+    border-color: var(--cat-css);
+    box-shadow: 0 3px 10px color-mix(in srgb, var(--cat-css) 30%, transparent);
+  }
+  
+  .card-js {
+    border: 1px solid color-mix(in srgb, var(--cat-js) 40%, var(--sl-color-hairline));
+    background: color-mix(in srgb, var(--cat-js) 12%, var(--sl-color-bg));
+  }
+  .card-js:hover {
+    border-color: var(--cat-js);
+    box-shadow: 0 3px 10px color-mix(in srgb, var(--cat-js) 30%, transparent);
+  }
+  
+  .card-ts {
+    border: 1px solid color-mix(in srgb, var(--cat-ts) 40%, var(--sl-color-hairline));
+    background: color-mix(in srgb, var(--cat-ts) 12%, var(--sl-color-bg));
+  }
+  .card-ts:hover {
+    border-color: var(--cat-ts);
+    box-shadow: 0 3px 10px color-mix(in srgb, var(--cat-ts) 30%, transparent);
+  }
+  
+  .card-angular {
+    border: 1px solid color-mix(in srgb, var(--cat-angular) 40%, var(--sl-color-hairline));
+    background: color-mix(in srgb, var(--cat-angular) 12%, var(--sl-color-bg));
+  }
+  .card-angular:hover {
+    border-color: var(--cat-angular);
+    box-shadow: 0 3px 10px color-mix(in srgb, var(--cat-angular) 30%, transparent);
+  }
+  
+  /* ==========================================================================
+     5. Q&A Accordion Cards (Custom Colors & High-Specificity Overrides)
+     ========================================================================== */
+  
+  /* Outer Details Container */
+  details {
+    background-color: var(--sl-color-gray-6);
+    border: 1px solid var(--sl-color-hairline);
+    border-radius: 0.4rem;
+    padding: 0.2rem 0.75rem !important;
+    margin-top: 0.25rem !important;
+    margin-bottom: 0.25rem !important;
+    color: var(--sl-color-text) !important;
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+  }
+  
+  details:hover {
+    border-color: var(--sl-color-accent);
+    box-shadow: 0 2px 8px color-mix(in srgb, var(--sl-color-accent) 12%, transparent);
+  }
+  
+  details[open] {
+    background-color: color-mix(in srgb, var(--sl-color-accent) 4%, var(--sl-color-gray-6));
+    border-color: color-mix(in srgb, var(--sl-color-accent) 40%, var(--sl-color-hairline));
+    box-shadow: 0 4px 10px color-mix(in srgb, var(--sl-color-accent) 15%, transparent);
+    padding-bottom: 0.5rem !important;
+  }
+  
+  /* Question Header Bar */
+  details summary {
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    cursor: pointer;
+    user-select: none;
+    padding: 0.15rem 0;
+    list-style: none !important;
+    font-size: 1rem !important;
+    line-height: 1.4 !important;
+  }
+  
+  details summary::-webkit-details-marker {
+    display: none !important;
+  }
+  
+  /* Standalone Chevron Arrow Icon */
+  details summary::before {
+    content: '';
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-right: 2.5px solid var(--sl-color-accent);
+    border-bottom: 2.5px solid var(--sl-color-accent);
+    transition: transform 0.2s ease-in-out;
+    flex-shrink: 0;
+    vertical-align: middle;
+  }
+  
+  details[open] summary::before {
+    transform: rotate(90deg);
+  }
+  
+  /* Hide Native and Pseudo Indicators */
+  details summary::after {
+    content: none !important;
+    display: none !important;
+  }
+  
+  /* High-Specificity Override for Heading Elements Inside Summary */
+  .sl-markdown-content details summary :is(h1, h2, h3, h4, h5, h6),
+  .sl-markdown-content details summary :is(h1, h2, h3, h4, h5, h6):not(:where(.not-content *)),
+  details summary .sl-heading-wrapper,
+  details summary span,
+  details summary p,
+  details summary a {
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    color: var(--sl-color-white) !important;
+  }
+  
+  details summary h2 {
+    color: #063970 !important;
+  }
+  
+  details[open] summary {
+    margin-bottom: 0.35rem !important;
+    padding-bottom: 0.3rem !important;
+    border-bottom: 1px solid color-mix(in srgb, var(--sl-color-hairline) 80%, transparent);
+  }
+  
+  /* Animation for Expanded Answer Body */
+  details[open] > *:not(summary) {
+    animation: qnaExpand 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  
+  @keyframes qnaExpand {
+    0% {
+      opacity: 0;
+      transform: translateY(-4px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Code Block Styling inside Accordion Body */
+  details pre {
+    margin-top: 0.4rem !important;
+    margin-bottom: 0.3rem !important;
+    padding: 0.5rem 0.75rem !important;
+    border-radius: 0.375rem !important;
+    font-size: 0.875rem !important;
+    border: 1px solid var(--sl-color-hairline) !important;
+  }
+  
+  /* ==========================================================================
+     6. Sidebar Navigation & Category Highlighting
+     ========================================================================== */
+  
+  .sidebar-pane {
+    padding: 0.85rem !important;
+  }
+  
+  .sidebar-content ul {
+    gap: 0.15rem !important;
+  }
+  
+  .sidebar-content a {
+    padding: 0.35rem 0.6rem !important;
+    border-radius: 0.375rem !important;
+    color: var(--sl-color-gray-2) !important;
+    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease !important;
+  }
+  
+  .sidebar-content a:hover {
+    color: var(--sl-color-white) !important;
+  }
+  
+  .sidebar-content a[aria-current="page"] {
+    font-weight: 600 !important;
+    color: var(--sl-color-white) !important;
+  }
+  
+  /* Category Specific Sidebar Highlights */
+  .sidebar-content a[href*="/html/"]:hover {
+    background-color: color-mix(in srgb, var(--cat-html) 15%, transparent) !important;
+    color: var(--cat-html) !important;
+  }
+  .sidebar-content a[href*="/html/"][aria-current="page"] {
+    background-color: color-mix(in srgb, var(--cat-html) 25%, transparent) !important;
+    color: var(--cat-html) !important;
+    border-left: 3px solid var(--cat-html) !important;
+  }
+  
+  .sidebar-content a[href*="/css/"]:hover {
+    background-color: color-mix(in srgb, var(--cat-css) 15%, transparent) !important;
+    color: var(--cat-css) !important;
+  }
+  .sidebar-content a[href*="/css/"][aria-current="page"] {
+    background-color: color-mix(in srgb, var(--cat-css) 25%, transparent) !important;
+    color: var(--cat-css) !important;
+    border-left: 3px solid var(--cat-css) !important;
+  }
+  
+  .sidebar-content a[href*="/js/"]:hover,
+  .sidebar-content a[href*="/javascript/"]:hover {
+    background-color: color-mix(in srgb, var(--cat-js) 15%, transparent) !important;
+    color: var(--cat-js) !important;
+  }
+  .sidebar-content a[href*="/js/"][aria-current="page"],
+  .sidebar-content a[href*="/javascript/"][aria-current="page"] {
+    background-color: color-mix(in srgb, var(--cat-js) 25%, transparent) !important;
+    color: var(--cat-js) !important;
+    border-left: 3px solid var(--cat-js) !important;
+  }
+  
+  .sidebar-content a[href*="/ts/"]:hover,
+  .sidebar-content a[href*="/typescript/"]:hover {
+    background-color: color-mix(in srgb, var(--cat-ts) 15%, transparent) !important;
+    color: var(--cat-ts) !important;
+  }
+  .sidebar-content a[href*="/ts/"][aria-current="page"],
+  .sidebar-content a[href*="/typescript/"][aria-current="page"] {
+    background-color: color-mix(in srgb, var(--cat-ts) 25%, transparent) !important;
+    color: var(--cat-ts) !important;
+    border-left: 3px solid var(--cat-ts) !important;
+  }
+  
+  .sidebar-content a[href*="/angular/"]:hover {
+    background-color: color-mix(in srgb, var(--cat-angular) 15%, transparent) !important;
+    color: var(--cat-angular) !important;
+  }
+  .sidebar-content a[href*="/angular/"][aria-current="page"] {
+    background-color: color-mix(in srgb, var(--cat-angular) 25%, transparent) !important;
+    color: var(--cat-angular) !important;
+    border-left: 3px solid var(--cat-angular) !important;
+  }
 
-/* 4. Reduce internal horizontal padding of sidebars for tighter text fitting */
-.starlight__sidebar .sidebar-content,
-.right-sidebar-container {
-  padding-inline: 0.5rem !important;
-}
+  astro-dev-toolbar,
+  [data-astro-dev-toolbar] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
