@@ -4,7 +4,7 @@ import starlight from '@astrojs/starlight';
 export default defineConfig({
   integrations: [
     starlight({
-      title: 'Learnings & Interview Vault',
+      title: 'ByteIndex',
       tableOfContents: false,
       customCss: ['./src/styles/custom.css'],
       sidebar: [
