@@ -13,6 +13,9 @@ export default defineConfig({
         { label: 'JavaScript', slug: 'javascript' },
         { label: 'TypeScript', slug: 'typescript' },
         { label: 'Angular', slug: 'angular' },
+        { label: 'NodeJS', slug: 'nodejs' },
+        { label: 'MongoDB', slug: 'mongodb' },
+        { label: 'GitHub', slug: 'github' },
       ],
       social: [
         {

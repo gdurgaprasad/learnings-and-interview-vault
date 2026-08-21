@@ -11,6 +11,9 @@
     --cat-js: #d97706;
     --cat-ts: #0284c7;
     --cat-angular: #e11d48;
+    --cat-nodejs: #339933;
+    --cat-mongodb: #00ED64;
+    --cat-github: #8534F3 ;
   }
   
   /* ==========================================================================
@@ -215,6 +218,34 @@
     border-color: var(--cat-angular);
     box-shadow: 0 3px 10px color-mix(in srgb, var(--cat-angular) 30%, transparent);
   }
+
+  .card-nodejs {
+    border: 1px solid color-mix(in srgb, var(--cat-nodejs) 40%, var(--sl-color-hairline));
+    background: color-mix(in srgb, var(--cat-nodejs) 12%, var(--sl-color-bg));
+  }
+  .card-nodejs:hover {
+    border-color: var(--cat-nodejs);
+    box-shadow: 0 3px 10px color-mix(in srgb, var(--cat-nodejs) 30%, transparent);
+  }
+
+  .card-mongodb {
+    border: 1px solid color-mix(in srgb, var(--cat-mongodb) 40%, var(--sl-color-hairline));
+    background: color-mix(in srgb, var(--cat-mongodb) 12%, var(--sl-color-bg));
+  }
+  .card-mongodb:hover {
+    border-color: var(--cat-mongodb);
+    box-shadow: 0 3px 10px color-mix(in srgb, var(--cat-mongodb) 30%, transparent);
+  }
+
+  .card-github {
+    border: 1px solid color-mix(in srgb, var(--cat-github) 40%, var(--sl-color-hairline));
+    background: color-mix(in srgb, var(--cat-github) 12%, var(--sl-color-bg));
+  }
+  .card-github:hover {
+    border-color: var(--cat-github);
+    box-shadow: 0 3px 10px color-mix(in srgb, var(--cat-github) 30%, transparent);
+  }
+  
   
   /* ==========================================================================
      5. Q&A Accordion Cards (Custom Colors & High-Specificity Overrides)
@@ -423,10 +454,60 @@
     border-left: 3px solid var(--cat-angular) !important;
   }
 
+  .sidebar-content a[href*="/nodejs/"]:hover {
+    background-color: color-mix(in srgb, var(--cat-nodejs) 15%, transparent) !important;
+    color: var(--cat-nodejs) !important;
+  }
+  .sidebar-content a[href*="/nodejs/"][aria-current="page"] {
+    background-color: color-mix(in srgb, var(--cat-nodejs) 25%, transparent) !important;
+    color: var(--cat-nodejs) !important;
+    border-left: 3px solid var(--cat-nodejs) !important;
+  }
+
+  .sidebar-content a[href*="/mongodb/"]:hover {
+    background-color: color-mix(in srgb, var(--cat-mongodb) 15%, transparent) !important;
+    color: var(--cat-mongodb) !important;
+  }
+  .sidebar-content a[href*="/mongodb/"][aria-current="page"] {
+    background-color: color-mix(in srgb, var(--cat-mongodb) 25%, transparent) !important;
+    color: var(--cat-mongodb) !important;
+    border-left: 3px solid var(--cat-mongodb) !important;
+  }
+
+  .sidebar-content a[href*="/github/"]:hover {
+    background-color: color-mix(in srgb, var(--cat-github) 15%, transparent) !important;
+    color: var(--cat-github) !important;
+  }
+  .sidebar-content a[href*="/github/"][aria-current="page"] {
+    background-color: color-mix(in srgb, var(--cat-github) 25%, transparent) !important;
+    color: var(--cat-github) !important;
+    border-left: 3px solid var(--cat-github) !important;
+  }
+
+
   astro-dev-toolbar,
   [data-astro-dev-toolbar] {
     display: none !important;
     visibility: hidden !important;
     opacity: 0 !important;
     pointer-events: none !important;
+  }
+
+  .code-side-by-side {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+  
+  .code-side-by-side > div {
+    flex: 1;
+    min-width: 0; /* Prevents pre/code overflow from expanding the container */
+  }
+  
+  /* On small screens/mobile, stack them vertically */
+  @media (max-width: 768px) {
+    .code-side-by-side {
+      flex-direction: column;
+    }
   }
